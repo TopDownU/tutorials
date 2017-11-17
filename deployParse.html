@@ -23,41 +23,63 @@
 
       <div class="row">
         <div class="row-white">
-            <h2 class="stepTitle">Create an App</h2>
-            <p class="stepParagraph">To create a new app, visit the Heroku Dashboard and select “Create new app” from the drop-down menu.</p>
-            <img class="stepImage" src="https://s3.amazonaws.com/heroku-devcenter-files/article-images/1470397039-2016-08-05_12-35-57.png"></img>
-            <h6 class="stepNumber">Step 1 of 4</h6>
+            <div class="padding-box">
+              <h2 class="stepTitle">Create an App</h2>
+              <p class="stepParagraph">To create a new app, visit the Heroku Dashboard and select “Create new app” from the drop-down menu.</p>
+              <img class="stepImage" src="https://s3.amazonaws.com/heroku-devcenter-files/article-images/1470397039-2016-08-05_12-35-57.png"></img>
+              <h6 class="stepNumber">Step 1 of 4</h6>
+            </div>
         </div>
       </div>
       <div class="row">
         <div class="row-gray">
+          <div class="padding-box">
             <h2 class="stepTitle">Install a MongoDB add-on</h2>
             <p class="stepParagraph">Click the Resources tab, then select and install the MongoLab add-on.</p>
             <img class="stepImage" src="https://s3.amazonaws.com/heroku-devcenter-files/article-images/1454616998-parse-mongolab.png"></img>
             <h6 class="stepNumber">Step 2 of 4</h6>
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="row-white">
+          <div class="padding-box">
             <h2 class="stepTitle">Connect to Github</h2>
             <p class="stepParagraph">To connect the parse-server-example to your Heroku app, you must enable the GitHub integration, and connect the app to the parse-server-example repo.<br/><br/>
             When the connection is established, the dashboard will update.
             </p>
             <img class="stepImage" src="https://s3.amazonaws.com/heroku-devcenter-files/article-images/1454616997-parse-github-connect.png"></img>
             <h6 class="stepNumber">Step 3 of 4</h6>
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="row-gray">
+          <div class="padding-box">
             <h2 class="stepTitle">Deploy</h2>
             <p class="stepParagraph">Trigger a manual deployment of the master branch.</p>
             <img class="stepImage" src="https://s3.amazonaws.com/heroku-devcenter-files/article-images/1454616998-parse-github-deploy.png"></img>
             <h6 class="stepNumber">Step 4 of 4</h6>
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="row-white">
-          
+          <div class="padding-box">
+            <h2 class="stepTitle">Test</h2>
+            <p class="stepParagraph">If the parse-server-example has been successfully deployed, you will now see, “I dream of being a web site.” <br/><br/>
+            You can now use the standard REST interface, JavaScript SDK, and any of the Parse open-source SDKs.</p>
+          </div>
+            <div class="codeSnippet">
+              <p class="code">
+                curl -X POST \ <br/>
+                  -H "X-Parse-Application-Id: myAppId" \ <br/>
+                  -H "Content-Type: application/json" \ <br/>
+                  -d '{}' \ <br/>
+                    https://example.herokuapp.com/parse/functions/hello <br/>
+              </p>
+            </div>
+
         </div>
       </div>
       <div class="row">
