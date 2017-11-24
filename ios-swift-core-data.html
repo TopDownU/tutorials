@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TopDownU Tutorials</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/2-col-portfolio.css" rel="stylesheet">
+    <link href="tutorials.css" rel="stylesheet">
+
+  </head>
+
+
+  <body>
+      <div class="header">
+          <h2 class="tutorialTitle">Saving and Fetching data locally using Core Data</h2>
+          <p class="tutorialDescription">in 4 simple steps</p>
+      </div>
+
+      <div class="row">
+        <div class="row-white">
+          <div class="padding-box">
+            <h2 class="stepTitle">Pre-requisites</h2>
+            <p class="stepParagraph"><a href="">Create a New XCode Project</a></p>
+          </div>
+        </div>
+        <div class="padding-box">
+          <h6 class="stepNumber">Step 1 of 4</h6>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-gray">
+          <div class="padding-box">
+            <h2 class="stepTitle">Setup the Data Model</h2>
+            <p class="stepParagraph"></p>
+            <img class="stepImage" src="images/coreData/1.png"></img>
+          </div>
+          <div class="padding-box">
+            <h6 class="stepNumber">Step 2 of 4</h6>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-white">
+          <div class="padding-box">
+            <h2 class="stepTitle">Import Framework and Create Context</h2>
+            <p class="stepParagraph"></p>
+          </div>
+          <div class="codeSnippet">
+            <p class="code">
+import UIKit<br/>
+import CoreData<br/><br/>
+
+class ViewController: UIViewController {<br/><br/>
+
+   &nbsp;&nbsp;&nbsp;&nbsp;let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            </p>
+          </div>
+          <div class="padding-box">
+            <h6 class="stepNumber">Step 2 of 4</h6>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-gray">
+          <div class="padding-box">
+            <h2 class="stepTitle">Create NSFetchRequest to get locally stored data</h2>
+            <p class="stepParagraph">Paste the code below in your viewDidLoad() method of your ViewController class.</p>
+          </div>
+          <div class="codeSnippet">
+            <p class="code">
+        self.save()<br/><br/>
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "EntityOne")<br/>
+        request.returnsObjectsAsFaults = false<br/>
+        do {<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;let result = try context.fetch(request)<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;for data in result as! [NSManagedObject] {<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(data.value(forKey: "attributeone") as! String)<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+        } catch {<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;print("Failed")<br/>
+        }
+            </p>
+          </div>
+          <div class="padding-box">
+            <h6 class="stepNumber">Step 3 of 4</h6>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-white">
+          <div class="padding-box">
+            <h2 class="stepTitle">Create a save method to store data locally</h2>
+            <p class="stepParagraph">Paste the method below in your ViewController class.</p>
+          </div>
+          <div class="codeSnippet">
+            <p class="code">
+
+    func save() {<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        return<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;}<br/><br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;let managedContext = appDelegate.persistentContainer.viewContext<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;let entity = NSEntityDescription.entity(forEntityName: "EntityOne", in: managedContext)!<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;let attributeone = NSManagedObject(entity: entity, insertInto: managedContext)<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;attributeone.setValue(String(describing: Date()), forKey: "attributeone")<br/><br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;do {<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    try managedContext.save()<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;} catch let error as NSError {<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    print("Could not save. \(error)")<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+    }<br/>
+
+            </p>
+          </div>
+          <div class="padding-box">
+            <h6 class="stepNumber">Step 4 of 4</h6>
+          </div>
+        </div>
+      </div>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-light">
+      <center>Copyright TopDownU 2017</center>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  </body>
+
+</html>

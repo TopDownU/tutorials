@@ -86,23 +86,23 @@
         <div class="row-gray">
             <div class="padding-box">
               <h2 class="stepTitle">Make an API Call and Parse Data</h2>
-              <p class="stepParagraph">Paste the code below in ViewDidLoad of your ViewController</p>
+              <p class="stepParagraph">Paste the code below in viewDidLoad() method of your ViewController class</p>
             </div>
 
             <div class="codeSnippet">
               <p class="code">
 
 Alamofire.request("https://jsonplaceholder.typicode.com/posts/1", method: .get).validate().responseJSON { response in <br/>
-&nbsp; switch response.result {<br/>
-            &nbsp; &nbsp; case .success(let value):<br/>
-                &nbsp; &nbsp; &nbsp;let json = JSON(value)<br/>
-                &nbsp; &nbsp; &nbsp;print(json)<br/>
-                &nbsp; &nbsp; &nbsp;print("User ID: " + json["userId"])<br/>
-                &nbsp; &nbsp; &nbsp;print("Title: " + json["title"])<br/>
-                &nbsp; &nbsp; &nbsp;print("Body: " + json["body"])<br/>
-            &nbsp; &nbsp;case .failure(let error):<br/>
-                &nbsp; &nbsp; &nbsp;print(error)<br/>
-    &nbsp;}<br/>
+&nbsp; &nbsp;switch response.result {<br/>
+            &nbsp; &nbsp; &nbsp; &nbsp; case .success(let value):<br/>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;let json = JSON(value)<br/>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;print(json)<br/>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;print("User ID: " + json["userId"])<br/>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;print("Title: " + json["title"])<br/>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;print("Body: " + json["body"])<br/>
+            &nbsp; &nbsp; &nbsp; &nbsp;case .failure(let error):<br/>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;print(error)<br/>
+    &nbsp; &nbsp;}<br/>
 }<br/><br/>
 
               </p>
