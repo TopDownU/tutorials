@@ -19,11 +19,101 @@
 
   </head>
 
+
   <body>
       <div class="header">
           <h2 class="tutorialTitle">Making API calls and parsing JSON objects</h2>
-          <p class="tutorialDescription">in # simple steps</p>
+          <p class="tutorialDescription">in 3 simple steps</p>
       </div>
+
+      <div class="row">
+        <div class="row-white">
+            <div class="padding-box">
+              <h2 class="stepTitle">Pre-requisites</h2>
+              <p class="stepParagraph"><a href="ios-new-xcode.html">Create a new Xcode Project</a><br/><br/><a href="cocoapods.html">Install Cocoapods</a></p>
+            </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="row-gray">
+            <div class="padding-box">
+              <h2 class="stepTitle">Installing Alamofire and SwiftyJSON</h2>
+              <p class="stepParagraph"><a href="using-podfile.html">Create a Podfile</a> and replace the text with the code below. And run a <a href="using-podfile.html">Pod Install</a></p>
+            </div>
+
+            <div class="codeSnippet">
+              <p class="code">
+                platform :ios, '9.0'<br/>
+                use_frameworks!<br/><br/>
+
+                target 'AlamofireSwiftyJSONSample' do<br/>
+                  pod 'Alamofire'<br/>
+                  pod 'SwiftyJSON'<br/>
+                end<br/><br/>
+
+              </p>
+      
+            </div>
+            <div class="padding-box">
+              <h6 class="stepNumber">Step 1 of 3</h6>
+            </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-white">
+            <div class="padding-box">
+              <h2 class="stepTitle">Import frameworks</h2>
+              <p class="stepParagraph"><a href="using-podfile.html">Create a Podfile</a> and replace the text with the code below. And run a <a href="using-podfile.html">Pod Install</a></p>
+            </div>
+
+            <div class="codeSnippet">
+              <p class="code">
+                import Alamofire<br/>
+                import SwiftyJSON<br/>
+              </p>
+      
+            </div>
+            <div class="padding-box">
+              <h6 class="stepNumber">Step 2 of 3</h6>
+            </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-gray">
+            <div class="padding-box">
+              <h2 class="stepTitle">Make an API Call and Parse Data</h2>
+              <p class="stepParagraph">Paste the code below in ViewDidLoad of your ViewController</p>
+            </div>
+
+            <div class="codeSnippet">
+              <p class="code">
+
+Alamofire.request("https://jsonplaceholder.typicode.com/posts/1", method: .get).validate().responseJSON { response in <br/>
+&nbsp; switch response.result {<br/>
+            &nbsp; &nbsp; case .success(let value):<br/>
+                &nbsp; &nbsp; &nbsp;let json = JSON(value)<br/>
+                &nbsp; &nbsp; &nbsp;print(json)<br/>
+                &nbsp; &nbsp; &nbsp;print("User ID: " + json["userId"])<br/>
+                &nbsp; &nbsp; &nbsp;print("Title: " + json["title"])<br/>
+                &nbsp; &nbsp; &nbsp;print("Body: " + json["body"])<br/>
+            &nbsp; &nbsp;case .failure(let error):<br/>
+                &nbsp; &nbsp; &nbsp;print(error)<br/>
+    &nbsp;}<br/>
+}<br/><br/>
+
+              </p>
+      
+            </div>
+            <div class="padding-box">
+              <h6 class="stepNumber">Step 3 of 3</h6>
+            </div>
+        </div>
+      </div>
+
 
     <!-- Footer -->
     <footer class="py-5 bg-light">
