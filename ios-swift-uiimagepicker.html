@@ -20,22 +20,150 @@
   </head>
 
   <body>
-      <div class="header">
-          <h2 class="tutorialTitle">Accessing user photos using UIImagePickerView</h2>
-          <p class="tutorialDescription">in 5 simple steps</p>
-      </div>
-
+    <div class="header">
+      <h2 class="tutorialTitle">Accessing user photos using UIImagePickerView</h2>
+      <p class="tutorialDescription">in 7 simple steps</p>
+    </div>
 
       <div class="row">
         <div class="row-white">
             <div class="padding-box">
-              <h2 class="stepTitle">Create an App</h2>
-              <p class="stepParagraph">To create a new app, visit the Heroku Dashboard and select “Create new app” from the drop-down menu.</p>
-              <img class="stepImage" src="https://s3.amazonaws.com/heroku-devcenter-files/article-images/1470397039-2016-08-05_12-35-57.png"></img>
-              <h6 class="stepNumber">Step 1 of 4</h6>
+              <h2 class="stepTitle">Pre-requisites</h2>
+              <p class="stepParagraph"><a href="ios-new-xcode.html">Create a new Xcode Project</a></p>
             </div>
         </div>
       </div>
+
+      <div class="row">
+        <div class="row-gray">
+          <div class="padding-box">
+            <h2 class="stepTitle">Setup Storyboard</h2>
+            <p class="stepParagraph">Go to Main.Storyboard, add a UIImageView and UIButton onto your ViewController as shown in the animation below,</p>
+          </div>
+          <div class="padding-box">
+            <h6 class="stepNumber">Step 1 of 7</h6>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-white">
+          <div class="padding-box">
+            <h2 class="stepTitle">Connect UI Elements to your View Controller</h2>
+            <p class="stepParagraph">Connect your UIImageView and UIButton to your ViewController as IBOutlets and Connect your UIButton to ViewController as an IBAction. As shown in the animation below,</p>
+          </div>
+          <div class="padding-box">
+            <h6 class="stepNumber">Step 2 of 7</h6>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-gray">
+          <div class="padding-box">
+            <h2 class="stepTitle">Inherit UIImagePickerControllerDelegate and UINavigationControllerDelegate Classes</h2>
+            <p class="stepParagraph">Replace ViewController class with the following code below,</p>
+          </div>
+            <div class="codeSnippet">
+              <p class="code">
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+              </p>
+            </div>
+          <div class="padding-box">
+            <h6 class="stepNumber">Step 3 of 7</h6>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-white">
+          <div class="padding-box">
+            <h2 class="stepTitle">Initialize UIImagePickerView</h2>
+            <p class="stepParagraph">Initialize Image Picker view and connect to delegate as shown below</p>
+          </div>
+            <div class="codeSnippet">
+              <p class="code">
+    let imagePicker = UIImagePickerController()<br/><br/>
+    
+    override func viewDidLoad() {<br/>
+        &nbsp;&nbsp;super.viewDidLoad()<br/>
+        &nbsp;&nbsp;// Do any additional setup after loading the view, typically from a nib.<br/><br/>
+
+        &nbsp;&nbsp;self.imagePicker.delegate = self<br/>
+    }<br/>
+              </p>
+            </div>
+
+          <div class="padding-box">
+            <h6 class="stepNumber">Step 4 of 7</h6>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="row-gray">
+          <div class="padding-box">
+            <h2 class="stepTitle">Setup Upload Tapped</h2>
+            <p class="stepParagraph">Modify upload tapped button</p>
+          </div>
+
+            <div class="codeSnippet">
+              <p class="code">
+        imagePicker.allowsEditing = false<br/>
+        imagePicker.sourceType = .photoLibrary<br/>
+        present(imagePicker, animated: true, completion: nil)<br/>
+              </p>
+            </div>
+
+          <div class="padding-box">
+            <h6 class="stepNumber">Step 5 of 7</h6>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-white">
+          <div class="padding-box">
+            <h2 class="stepTitle">Setup Delegate Methods</h2>
+            <p class="stepParagraph">Paste the delegate methods below into your ViewController class.</p>
+          </div>
+            <div class="codeSnippet">
+              <p class="code">
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){<br/>
+     &nbsp;&nbsp;   if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage{<br/>
+     &nbsp;&nbsp;&nbsp;&nbsp;       self.imageView.contentMode = .scaleAspectFit<br/>
+     &nbsp;&nbsp;&nbsp;&nbsp;       self.imageView.image = pickedImage<br/>
+     &nbsp;&nbsp;   }<br/>
+     &nbsp;&nbsp;   dismiss(animated: true, completion: nil)<br/>
+    }<br/><br/>
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController){<br/>
+     &nbsp;&nbsp;   dismiss(animated: true, completion: nil)<br/>
+    }<br/>
+              </p>
+            </div>
+          </div>
+          <div class="padding-box">
+            <h6 class="stepNumber">Step 6 of 7</h6>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="row-gray">
+          <div class="padding-box">
+            <h2 class="stepTitle">Run and test</h2>
+            <p class="stepParagraph">Hit the play button, you should be able to upload an image and see it appear on the image view.</p>
+          </div>
+          <div class="padding-box">
+            <h6 class="stepNumber">Step 7 of 7</h6>
+          </div>
+        </div>
+      </div>
+
+
 
     <!-- Footer -->
     <footer class="py-5 bg-light">
