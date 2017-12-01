@@ -40,6 +40,23 @@
             <h2 class="stepTitle">Signup</h2>
             <p class="stepParagraph">Enter Description here</p>
           </div>
+          <div class="codeSnippet">
+            <p class="code">
+                var user = PFUser()<br/>
+                user.username = "myUsername"<br/>
+                user.password = "myPassword"<br/>
+                user.email = "email@example.com"<br/><br/>
+                user.signUpInBackgroundWithBlock {<br/>
+                &nbsp;&nbsp;(succeeded: Bool, error: NSError?) -> Void in<br/>
+                &nbsp;&nbsp;if let error = error {<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;let errorString = error.userInfo["error"] as? NSString<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;// Show the errorString somewhere and let the user try again.<br/>
+                &nbsp;&nbsp;} else {<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;// Hooray! Let them use the app now.<br/>
+                &nbsp;&nbsp;}<br/>
+                }
+            </p>
+          </div>
         </div>
       </div>
 
@@ -48,6 +65,24 @@
           <div class="padding-box">
             <h2 class="stepTitle">Login</h2>
             <p class="stepParagraph">Enter Description here</p>
+          </div>
+          <div class="codeSnippet">
+            <p class="code">
+
+            PFUser.logInWithUsername(inBackground: "email@emaill.com", password:"password1234") { <br/>
+                (user: PFUser?, error: Error?) -> Void in <br/>
+                &nbsp;&nbsp;if user != nil { <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;// login successful - transition to next screen <br/>
+                &nbsp;&nbsp;} <br/><br/>
+                    
+                &nbsp;&nbsp;else {<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;// The login failed. Check error to see why.<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;let alertController = UIAlertController(title: "Could not login!", message: error?.localizedDescription , preferredStyle: UIAlertControllerStyle.alert)<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;alertController.addAction(UIAlertAction(title: "Dismiss", style: &nbsp;&nbsp;&nbsp;&nbsp;UIAlertActionStyle.default,handler: nil))<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;self.present(alertController, animated: true, completion: nil)<br/>
+                &nbsp;&nbsp;}<br/>
+            }<br/>
+            </p>
           </div>
         </div>
       </div>

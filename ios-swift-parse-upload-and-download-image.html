@@ -41,6 +41,11 @@
               <h2 class="stepTitle">Import Framework</h2>
               <p class="stepParagraph"></p>
             </div>
+            <div class="codeSnippet">
+              <p class="code">
+                import Parse
+              </p>
+            </div>
         </div>
       </div>
 
@@ -50,6 +55,17 @@
               <h2 class="stepTitle">Store Image</h2>
               <p class="stepParagraph"></p>
             </div>
+            <div class="codeSnippet">
+              <p class="code">
+let imageData = UIImagePNGRepresentation(image)<br/>
+let imageFile = PFFile(name:"image.png", data:imageData)<br/><br/>
+
+var userPhoto = PFObject(className:"UserPhoto")<br/>
+userPhoto["imageName"] = "My trip to Hawaii!"<br/>
+userPhoto["imageFile"] = imageFile<br/>
+userPhoto.saveInBackground()<br/>
+              </p>
+            </div>
         </div>
       </div>
 
@@ -58,6 +74,21 @@
             <div class="padding-box">
               <h2 class="stepTitle">Retrieve Image</h2>
               <p class="stepParagraph"></p>
+            </div>
+            <div class="codeSnippet">
+              <p class="code">
+
+let userImageFile = anotherPhoto["imageFile"] as PFFile<br/><br/>
+userImageFile.getDataInBackgroundWithBlock {<br/>
+&nbsp;(imageData: NSData?, error: NSError?) -> Void in<br/>
+&nbsp;&nbsp;if error == nil {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;if let imageData = imageData {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let image = UIImage(data:imageData)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;}<br/>
+}<br/>
+
+              </p>
             </div>
         </div>
       </div>

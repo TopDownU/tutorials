@@ -41,6 +41,11 @@
               <h2 class="stepTitle">Import Framework</h2>
               <p class="stepParagraph"></p>
             </div>
+            <div class="codeSnippet">
+              <p class="code">
+                import Parse
+              </p>
+            </div>
         </div>
       </div>
 
@@ -50,15 +55,60 @@
               <h2 class="stepTitle">Store Information</h2>
               <p class="stepParagraph"></p>
             </div>
+
+            <div class="codeSnippet">
+              <p class="code">
+var gameScore = PFObject(className:"GameScore")<br/>
+gameScore["score"] = 1337<br/>
+gameScore["playerName"] = "Sean Plott"<br/>
+gameScore["cheatMode"] = false<br/>
+gameScore.saveInBackground {<br/>
+&nbsp;&nbsp;(success: Bool, error: Error?) in<br/>
+&nbsp;&nbsp;if (success) {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;// The object has been saved.<br/>
+&nbsp;&nbsp;} else {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;// There was a problem, check error.description<br/>
+&nbsp;&nbsp;}<br/>
+}<br/>
+
+              </p>
+            </div>
+
         </div>
       </div>
 
       <div class="row">
         <div class="row-gray">
             <div class="padding-box">
-              <h2 class="stepTitle">Retrieve Information</h2>
+              <h2 class="stepTitle">Query Information</h2>
               <p class="stepParagraph"></p>
             </div>
+
+            <div class="codeSnippet">
+              <p class="code">
+var query = PFQuery(className:"GameScore")<br/>
+query.whereKey("playerName", equalTo:"Sean Plott")<br/>
+query.findObjectsInBackgroundWithBlock {<br/>
+&nbsp;&nbsp;(objects: [PFObject]?, error: NSError?) -> Void in<br/><br/>
+
+&nbsp;&nbsp;if error == nil {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;// The find succeeded.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;print("Successfully retrieved \(objects!.count) scores.")<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;// Do something with the found objects<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;if let objects = objects {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for object in objects {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(object.objectId)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;} else {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;// Log details of the failure<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;print("Error: \(error!) \(error!.userInfo)")<br/>
+&nbsp;&nbsp;}<br/>
+}
+
+              </p>
+            </div>
+
         </div>
       </div>
 
