@@ -30,6 +30,7 @@
             <div class="padding-box">
               <h2 class="stepTitle">Drag Mapview</h2>
               <p class="stepParagraph">description</p>
+              <div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/l2RnwTV9qgG2M00Io" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/l2RnwTV9qgG2M00Io">via GIPHY</a></p>
             </div>
             <div class="padding-box">
               <h6 class="stepNumber">Step 1 of 4</h6>
@@ -40,8 +41,9 @@
       <div class="row">
         <div class="row-gray">
             <div class="padding-box">
-              <h2 class="stepTitle">Import Mapkit</h2>
+              <h2 class="stepTitle">Create an IBOutlet</h2>
               <p class="stepParagraph">description</p>
+              <div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/3osBLtxXTweCRyNFbW" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/3osBLtxXTweCRyNFbW">via GIPHY</a></p>
             </div>
             <div class="padding-box">
               <h6 class="stepNumber">Step 2 of 4</h6>
@@ -52,8 +54,13 @@
       <div class="row">
         <div class="row-white">
             <div class="padding-box">
-              <h2 class="stepTitle">Center Map</h2>
+              <h2 class="stepTitle">Import MapKit framework</h2>
               <p class="stepParagraph">description</p>
+            </div>
+            <div class="codeSnippet">
+              <p class="code">
+                import MapKit
+              </p>
             </div>
             <div class="padding-box">
               <h6 class="stepNumber">Step 3 of 4</h6>
@@ -64,8 +71,26 @@
       <div class="row">
         <div class="row-gray">
             <div class="padding-box">
-              <h2 class="stepTitle">Add Pin</h2>
+              <h2 class="stepTitle">Center Map</h2>
               <p class="stepParagraph">description</p>
+            </div>
+            <div class="codeSnippet">
+              <p class="code">
+                let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444) <br/>
+                let regionRadius: CLLocationDistance = 1000<br/><br/>
+
+                override func viewDidLoad() {<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;super.viewDidLoad()<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;// Do any additional setup after loading the view, typically from a nib.<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;centerMapOnLocation(location: initialLocation)<br/>
+                }<br/><br/>
+
+
+                func centerMapOnLocation(location: CLLocation) {<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius, regionRadius)<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;mapView.setRegion(coordinateRegion, animated: true)<br/>
+                } <br/><br/>
+              </p>
             </div>
             <div class="padding-box">
               <h6 class="stepNumber">Step 4 of 4</h6>

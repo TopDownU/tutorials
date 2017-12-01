@@ -21,8 +21,118 @@
 
   <body>
       <div class="header">
-          <h2 class="tutorialTitle">Getting user's location</h2>
-          <p class="tutorialDescription">in # simple steps</p>
+          <h2 class="tutorialTitle">Getting User's Location</h2>
+          <p class="tutorialDescription">in 5 simple steps</p>
+      </div>
+
+      <div class="row">
+        <div class="row-white">
+            <div class="padding-box">
+              <h2 class="stepTitle">Pre-Requisites</h2>
+              <p class="stepParagraph"></p>
+            </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-gray">
+            <div class="padding-box">
+              <h2 class="stepTitle">Import CoreLocation framework</h2>
+              <p class="stepParagraph"></p>
+            </div>
+            <div class="codeSnippet">
+              <p class="code">
+                  import CoreLocation
+              </p>
+            </div>
+            <div class="padding-box">
+              <h6 class="stepNumber">Step 1 of 5</h6>
+            </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-white">
+            <div class="padding-box">
+              <h2 class="stepTitle">Inherit delegate class</h2>
+              <p class="stepParagraph"></p>
+            </div>
+            <div class="codeSnippet">
+              <p class="code">
+                class ViewController: UIViewController, CLLocationManagerDelegate {
+              </p>
+            </div>
+            <div class="padding-box">
+              <h6 class="stepNumber">Step 2 of 5</h6>
+            </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-gray">
+            <div class="padding-box">
+              <h2 class="stepTitle">Initialize location manager</h2>
+              <p class="stepParagraph"></p>
+            </div>
+            <div class="codeSnippet">
+              <p class="code">
+                var locationManager : CLLocationManager!<br/><br/>
+    
+                override func viewDidLoad() {<br/>
+                 &nbsp;&nbsp; super.viewDidLoad()<br/>
+                 &nbsp;&nbsp; // Do any additional setup after loading the view, typically from a nib.<br/><br/>
+                 &nbsp;&nbsp; locationManager = CLLocationManager()<br/>
+                 &nbsp;&nbsp; locationManager.delegate = self<br/>
+                 &nbsp;&nbsp; locationManager.desiredAccuracy = kCLLocationAccuracyBest<br/>
+                 &nbsp;&nbsp; locationManager.requestAlwaysAuthorization()<br/><br/>
+                 &nbsp;&nbsp; if(CLLocationManager.locationServicesEnabled()){<br/>
+                 &nbsp;&nbsp;&nbsp;&nbsp;   locationManager.startUpdatingLocation()<br/>
+                 &nbsp;&nbsp; }<br/>
+                }<br/>
+              </p>
+            </div>
+            <div class="padding-box">
+              <h6 class="stepNumber">Step 3 of 5</h6>
+            </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-white">
+            <div class="padding-box">
+              <h2 class="stepTitle">Implement delegate methods</h2>
+              <p class="stepParagraph"></p>
+            </div>
+            <div class="codeSnippet">
+              <p class="code">
+              func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){<br/>
+              &nbsp;&nbsp;  let userLocation:CLLocation = locations[0] as CLLocation<br/>
+              &nbsp;&nbsp;  manager.stopUpdatingLocation()<br/>
+              &nbsp;&nbsp;  print("Latitude: \(userLocation.coordinate.latitude)")<br/>
+              &nbsp;&nbsp;  print("Longtitude: \(userLocation.coordinate.longitude)")<br/>
+              }<br/><br/>
+
+              func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {<br/>
+              &nbsp;&nbsp;print(error)<br/>
+              }
+              </p>
+            </div>
+            <div class="padding-box">
+              <h6 class="stepNumber">Step 4 of 5</h6>
+            </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-gray">
+            <div class="padding-box">
+              <h2 class="stepTitle">Run and test</h2>
+              <p class="stepParagraph"></p>
+            </div>
+            <div class="padding-box">
+              <h6 class="stepNumber">Step 5 of 5</h6>
+            </div>
+        </div>
       </div>
 
     <!-- Footer -->
