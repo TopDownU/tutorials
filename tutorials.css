@@ -32,16 +32,14 @@ bold{
 }
 
 .row-gray{
-	background-color: #F3F3F3;
+	background-color: #FFF;
 	height: 100%;
 	width: 100%;
 }
 
 .stepNumber{
-	padding-top: 3%;
-	padding-bottom: 3%;
 	color: #adabab;
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: 500;
 }
 
@@ -56,9 +54,9 @@ bold{
 }
 
 .tutorialDescription{
-	font-weight: 400;
-	font-size: 26px;
-	padding-left: 5%;
+	font-weight: 300;
+	font-size: 24px;
+	padding-left: 6%;
 	color: #7c7c7c;		
 	padding-bottom: 5%;	
 	line-height: 1.5;
@@ -66,17 +64,16 @@ bold{
 
 .stepTitle{
 	padding-top: 20%;
-	padding-bottom: 3%;
 	font-weight: 700;
-	font-size: 28px;
+	font-size: 24px;
 }
 
 .stepParagraph{
-	padding-top: 1%;
+	padding-top: 0.5%;
 	padding-bottom: 4%;
-	font-size: 20px;
-	font-weight: 400;
-	color: #7c7c7c;
+	font-size: 18px;
+	font-weight: 300;
+	color: #000;
 	line-height: 1.5;
 }
 
@@ -103,4 +100,18 @@ bold{
 footer{
 	padding: 2%;
 	background-color: #FFF;
+}
+
+.codeTerm{
+	color:  #7d3c98;
+	font-weight: 400;
+}
+
+.codeTermRed{
+	color:  #e74c3c;
+	font-weight: 400;
+}
+
+.giphy-embed{
+	border-radius: 5px;
 }

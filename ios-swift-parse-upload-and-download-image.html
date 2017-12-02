@@ -57,11 +57,11 @@
             </div>
             <div class="codeSnippet">
               <p class="code">
-let imageData = UIImagePNGRepresentation(image)<br/>
-let imageFile = PFFile(name:"image.png", data:imageData)<br/><br/>
+                let imageData = UIImagePNGRepresentation(image)<br/>
+                let imageFile = PFFile(name:"image.png", data:imageData)<br/><br/>
 
-var userPhoto = PFObject(className:"UserPhoto")<br/>
-userPhoto["imageName"] = "My trip to Hawaii!"<br/>
+                var userPhoto = PFObject(className:"UserPhoto")<br/>
+        userPhoto["imageName"] = "My trip to Hawaii!"<br/>
 userPhoto["imageFile"] = imageFile<br/>
 userPhoto.saveInBackground()<br/>
               </p>
